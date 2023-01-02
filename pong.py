@@ -29,6 +29,9 @@ ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
 ball.color("white")
+ball.penup()
+ball.dx = .5
+ball.dy = .5
 
 #Logic for Left paddle
 def left_paddle_up():
@@ -47,11 +50,16 @@ def right_paddle_down():
     right_paddle.sety(right_paddle.ycor()- 20)
 
 win.listen()
-win.onkeypress(right_paddle_up, "up")
-win.onkeypress(right_paddle_down, "down")
+# win.onkeypress(right_paddle_up, "Up")
+# win.onkeypress(right_paddle_down, "Down")
 
 
 while True:
     win.update()
     # ball movement 
-    def b
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor()+ ball.dy)
+    if ball.ycor()>=290:
+        ball.dy *= -1
+    elif ball.ycor()<=-290:
+        ball.dy *= -1
